@@ -11,6 +11,7 @@ ST-ctl-CLIHUM-NAME = Humidity
 ST-ctl-DEWPT-NAME = Dew Point
 ST-ctl-BARPRES-NAME = Pressure
 ST-ctl-WINDDIR-NAME = Wind Direction
+ST-ctl-DISTANC-NAME = Visibility
 ST-ctl-LUMIN-NAME = Light
 ST-ctl-SOLRAD-NAME = Solar Radiation
 ST-ctl-SPEED-NAME = Wind Speed
