@@ -20,7 +20,7 @@ import node_funcs
 from datetime import timedelta
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import ParseError
-#from nodes import uom
+from nodes import uom
 
 LOGGER = polyinterface.LOGGER
 
