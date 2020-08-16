@@ -112,7 +112,7 @@ class Controller(polyinterface.Controller):
                     self.update_driver('CLITEMP', item.text)
                 if item.tag == 'temp_c':
                     LOGGER.debug(item.text)
-                if item.tag == 'relative_humdity':
+                if item.tag == 'relative_humidity':
                     self.update_driver('CLIHUM', item.text)
                 if item.tag == 'wind_dir':
                     LOGGER.debug(item.text)
@@ -208,14 +208,6 @@ class Controller(polyinterface.Controller):
             {'driver': 'WINDDIR', 'value': 0, 'uom': 76},  # direction
             {'driver': 'SPEED', 'value': 0, 'uom': 49},    # wind speed
             {'driver': 'DISTANC', 'value': 0, 'uom': 83},  # visibility
-            {'driver': 'GV5', 'value': 0, 'uom': 49},      # gust speed
-            {'driver': 'GV2', 'value': 0, 'uom': 4},       # feels like
-            {'driver': 'RAINRT', 'value': 0, 'uom': 46},   # rain
-            {'driver': 'GV13', 'value': 0, 'uom': 25},     # climate conditions
-            {'driver': 'GV14', 'value': 0, 'uom': 22},     # cloud conditions
-            {'driver': 'GV9', 'value': 0, 'uom': 56},      # moon phase
-            {'driver': 'SOLRAD', 'value': 0, 'uom': 74},   # solar radiataion
-            {'driver': 'GV17', 'value': 0, 'uom': 56},     # aqi
             {'driver': 'GVP', 'value': 30, 'uom': 25},     # log level
             ]
 
