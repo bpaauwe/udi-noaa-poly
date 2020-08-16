@@ -68,6 +68,7 @@ class Controller(polyinterface.Controller):
         LOGGER.info('Starting node server')
         self.check_params()
         self.discover()
+        self.uom = uom.get_uom('imperial')
         LOGGER.info('Node server started')
 
         # Do an initial query to get filled in as soon as possible
