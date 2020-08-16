@@ -106,31 +106,31 @@ class Controller(polyinterface.Controller):
             LOGGER.debug('Parse XML and set drivers')
             noaa = ET.fromstring(xdata)
             for item in noaa:
-                LOGGER.debug(item.tag)
+                LOGGER.debug(item.tag + ' = ' + item.text)
                 if item.tag == 'temp_f':
                     self.update_driver('CLITEMP', item.text)
                 if item.tag == 'temp_c':
-                    LOGGER.debug(item.attrib)
+                    LOGGER.debug(item.text)
                 if item.tag == 'relative_humdity':
                     self.update_driver('CLIHUM', item.text)
                 if item.tag == 'wind_dir':
-                    LOGGER.debug(item.attrib)
+                    LOGGER.debug(item.text)
                 if item.tag == 'wind_degrees':
                     self.update_driver('WINDDIR', item.text)
                 if item.tag == 'wind_mph':
                     self.update_driver('SPEED', item.text)
                 if item.tag == 'wind_kt':
-                    LOGGER.debug(item.attrib)
+                    LOGGER.debug(item.text)
                 if item.tag == 'pressure_in':
                     self.update_driver('BARPRES', item.text)
                 if item.tag == 'dewpoint_f':
                     self.update_driver('DEWPT', item.text)
                 if item.tag == 'dewpoint_c':
-                    LOGGER.debug(item.attrib)
+                    LOGGER.debug(item.text)
                 if item.tag == 'heat_index_f':
-                    LOGGER.debug(item.attrib)
+                    LOGGER.debug(item.text)
                 if item.tag == 'heat_index_c':
-                    LOGGER.debug(item.attrib)
+                    LOGGER.debug(item.text)
                 if item.tag == 'visibility_mi':
                     self.update_driver('DISTANC', item.text)
 
@@ -200,19 +200,19 @@ class Controller(polyinterface.Controller):
     # controller node.
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},   # node server status
-            {'driver': 'CLITEMP', 'value': 0, 'uom': 4},   # temperature
+            {'driver': 'CLITEMP', 'value': 0, 'uom': 17},  # temperature
             {'driver': 'CLIHUM', 'value': 0, 'uom': 22},   # humidity
-            {'driver': 'DEWPT', 'value': 0, 'uom': 4},     # dewpoint
+            {'driver': 'DEWPT', 'value': 0, 'uom': 17},    # dewpoint
             {'driver': 'BARPRES', 'value': 0, 'uom': 117}, # pressure
             {'driver': 'WINDDIR', 'value': 0, 'uom': 76},  # direction
             {'driver': 'SPEED', 'value': 0, 'uom': 49},    # wind speed
+            {'driver': 'DISTANC', 'value': 0, 'uom': 83},  # visibility
             {'driver': 'GV5', 'value': 0, 'uom': 49},      # gust speed
             {'driver': 'GV2', 'value': 0, 'uom': 4},       # feels like
             {'driver': 'RAINRT', 'value': 0, 'uom': 46},   # rain
             {'driver': 'GV13', 'value': 0, 'uom': 25},     # climate conditions
             {'driver': 'GV14', 'value': 0, 'uom': 22},     # cloud conditions
             {'driver': 'GV9', 'value': 0, 'uom': 56},      # moon phase
-            {'driver': 'DISTANC', 'value': 0, 'uom': 83},  # visibility
             {'driver': 'SOLRAD', 'value': 0, 'uom': 74},   # solar radiataion
             {'driver': 'GV17', 'value': 0, 'uom': 56},     # aqi
             {'driver': 'GVP', 'value': 30, 'uom': 25},     # log level
