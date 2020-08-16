@@ -136,7 +136,7 @@ class Controller(polyinterface.Controller):
                 if item.tag == 'visibility_mi':
                     self.update_driver('DISTANC', item.text)
                 if item.tag == 'weather':
-                    self.update_driver('GV13', phrase_to_id(item.txt))
+                    self.update_driver('GV13', conditions.phrase_to_id(item.txt))
 
         except Exception as e:
             LOGGER.error('Current observation update failure')
