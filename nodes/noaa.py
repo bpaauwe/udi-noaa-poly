@@ -20,9 +20,7 @@ import node_funcs
 from datetime import timedelta
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import ParseError
-from nodes import climacell_daily
-from nodes import uom
-from nodes import weather_codes as wx
+#from nodes import uom
 
 LOGGER = polyinterface.LOGGER
 
@@ -93,22 +91,49 @@ class Controller(polyinterface.Controller):
 
 
         try:
-            request = 'http://w1.weather.gov/cml/current_obs/'
+            request = 'http://w1.weather.gov/xml/current_obs/'
             request += self.params.get('Station') + '.xml'
 
             c = requests.get(request)
-            jdata = c.json()
+            xdata = c.text
             c.close()
-            LOGGER.debug(jdata)
+            LOGGER.debug(xdata)
 
-            if jdata == None:
+            if xdata == None:
                 LOGGER.error('Current condition query returned no data')
                 return
         
             LOGGER.debug('Parse XML and set drivers')
-            noaa = ET.Parse(jdata)
-            LOGGER.debug('temp = ' + noaa['temp_f'])
-            LOGGER.debug(noaa)
+            noaa = ET.fromstring(xdata)
+            for item in noaa:
+                LOGGER.debug(item.tag)
+                if item.tag == 'temp_f':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'temp_c':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'relative_humdity':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'wind_dir':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'wind_degrees':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'wind_mph':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'wind_kt':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'pressure_in':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'dewpoint_f':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'dewpoint_c':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'heat_index_f':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'heat_index_c':
+                    LOGGER.debug(item.attrib)
+                if item.tag == 'visibility_mi':
+                    LOGGER.debug(item.attrib)
+
             return
             if 'temp' in jdata:
                 self.update_driver('CLITEMP', jdata['temp']['value'])
