@@ -108,23 +108,23 @@ class Controller(polyinterface.Controller):
             for item in noaa:
                 LOGGER.debug(item.tag)
                 if item.tag == 'temp_f':
-                    LOGGER.debug(item.attrib)
+                    self.update_driver('CLITEMP', item.text)
                 if item.tag == 'temp_c':
                     LOGGER.debug(item.attrib)
                 if item.tag == 'relative_humdity':
-                    LOGGER.debug(item.attrib)
+                    self.update_driver('CLIHUM', item.text)
                 if item.tag == 'wind_dir':
                     LOGGER.debug(item.attrib)
                 if item.tag == 'wind_degrees':
-                    LOGGER.debug(item.attrib)
+                    self.update_driver('WINDDIR', item.text)
                 if item.tag == 'wind_mph':
-                    LOGGER.debug(item.attrib)
+                    self.update_driver('SPEED', item.text)
                 if item.tag == 'wind_kt':
                     LOGGER.debug(item.attrib)
                 if item.tag == 'pressure_in':
-                    LOGGER.debug(item.attrib)
+                    self.update_driver('BARPRES', item.text)
                 if item.tag == 'dewpoint_f':
-                    LOGGER.debug(item.attrib)
+                    self.update_driver('DEWPT', item.text)
                 if item.tag == 'dewpoint_c':
                     LOGGER.debug(item.attrib)
                 if item.tag == 'heat_index_f':
@@ -132,41 +132,7 @@ class Controller(polyinterface.Controller):
                 if item.tag == 'heat_index_c':
                     LOGGER.debug(item.attrib)
                 if item.tag == 'visibility_mi':
-                    LOGGER.debug(item.attrib)
-
-            return
-            if 'temp' in jdata:
-                self.update_driver('CLITEMP', jdata['temp']['value'])
-
-            if 'humidity' in jdata:
-                self.update_driver('CLIHUM', jdata['humidity']['value'])
-            if 'baro_pressure' in jdata:
-                self.update_driver('BARPRES', jdata['baro_pressure']['value'])
-            if 'wind_speed' in jdata:
-                self.update_driver('SPEED', jdata['wind_speed']['value'])
-            if 'wind_gust' in jdata:
-                self.update_driver('GV5', jdata['wind_gust']['value'])
-            if 'wind_direction' in jdata:
-                self.update_driver('WINDDIR', jdata['wind_direction']['value'])
-            if 'visibility' in jdata:
-                self.update_driver('DISTANC', jdata['visibility']['value'])
-            if 'precipitation' in jdata:
-                self.update_driver('RAINRT', jdata['precipitation']['value'])
-            if 'dewpoint' in jdata:
-                self.update_driver('DEWPT', jdata['dewpoint']['value'])
-            if 'feels_like' in jdata:
-                self.update_driver('GV2', jdata['feels_like']['value'])
-            if 'surface_shortwave_radiation' in jdata:
-                self.update_driver('SOLRAD', jdata['surface_shortwave_radiation']['value'])
-            if 'cloud_cover' in jdata:
-                self.update_driver('GV14', jdata['cloud_cover']['value'])
-            if 'weather_code' in jdata:
-                LOGGER.debug('weather code = ' + jdata['weather_code']['value'])
-                self.update_driver('GV13', wx.weather_code(jdata['weather_code']['value']))
-            if 'moon_phase' in jdata:
-                self.update_driver('GV9', wx.moon_phase(jdata['moon_phase']['value']))
-            if 'epa_aqi' in jdata:
-                self.update_driver('GV17', jdata['epa_aqi']['value'])
+                    self.update_driver('DISTANC', item.text)
 
         except Exception as e:
             LOGGER.error('Current observation update failure')
