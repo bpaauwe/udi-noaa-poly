@@ -21,6 +21,7 @@ from datetime import timedelta
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import ParseError
 from nodes import uom
+from nodes import conditions
 
 LOGGER = polyinterface.LOGGER
 
@@ -134,6 +135,8 @@ class Controller(polyinterface.Controller):
                     LOGGER.debug(item.text)
                 if item.tag == 'visibility_mi':
                     self.update_driver('DISTANC', item.text)
+                if item.tag == 'weather':
+                    self.update_driver('GV13', phrase_to_id(item.txt))
 
         except Exception as e:
             LOGGER.error('Current observation update failure')
@@ -208,6 +211,7 @@ class Controller(polyinterface.Controller):
             {'driver': 'WINDDIR', 'value': 0, 'uom': 76},  # direction
             {'driver': 'SPEED', 'value': 0, 'uom': 49},    # wind speed
             {'driver': 'DISTANC', 'value': 0, 'uom': 83},  # visibility
+            {'driver': 'GV13', 'value': 0, 'uom': 25},     # weather
             {'driver': 'GVP', 'value': 30, 'uom': 25},     # log level
             ]
 
