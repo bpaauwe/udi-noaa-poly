@@ -9,15 +9,8 @@
       <st id="BARPRES" editor="PRESSURE" />
       <st id="WINDDIR" editor="DEGREES" />
       <st id="SPEED" editor="SPEED" />
-      <st id="GV5" editor="SPEED" />
       <st id="DISTANC" editor="DISTANCE" />
       <st id="GV13" editor="WEATHER" />
-      <st id="GV14" editor="PERCENT" />
-      <st id="GV9" editor="int" />
-      <st id="GV2" editor="TEMPERATURE" />
-      <st id="RAINRT" editor="RATE" />
-      <st id="GV17" editor="int" />
-      <st id="SOLRAD" editor="SOLARRAD" />
     </sts>
     <cmds>
       <sends />
