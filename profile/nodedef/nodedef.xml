@@ -11,6 +11,13 @@
       <st id="SPEED" editor="SPEED" />
       <st id="DISTANC" editor="DISTANCE" />
       <st id="GV13" editor="WEATHER" />
+      <st id="GV21" editor="ALERT" />
+      <st id="GV22" editor="ALERT_STATUS" />
+      <st id="GV23" editor="ALERT_TYPE" />
+      <st id="GV24" editor="ALERT_CATEGORY" />
+      <st id="GV25" editor="ALERT_SEVERITY" />
+      <st id="GV26" editor="ALERT_URGENCY" />
+      <st id="GV27" editor="ALERT_CERTAINY" />
     </sts>
     <cmds>
       <sends />

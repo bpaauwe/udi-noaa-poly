@@ -47,6 +47,14 @@ def get_uom(units):
             'GV18': 22,     # chance of precipitation
             'GV19': 25,     # day of week
             'GV20': 106,    # ETo
+            'GV21': 25,
+            'GV22': 25,
+            'GV23': 25,
+            'GV24': 25,
+            'GV25': 25,
+            'GV26': 25,
+            'GV27': 25,
+            'TIME': 121,
         }
     elif unit_cfg == 'uk':
         uom = {
@@ -81,6 +89,14 @@ def get_uom(units):
             'GV18': 22,     # chance of precipitation
             'GV19': 25,     # day of week
             'GV20': 120,    # ETo
+            'GV21': 25,
+            'GV22': 25,
+            'GV23': 25,
+            'GV24': 25,
+            'GV25': 25,
+            'GV26': 25,
+            'GV27': 25,
+            'TIME': 121,
         }
     else:
         uom = {
@@ -115,6 +131,14 @@ def get_uom(units):
             'GV18': 22,     # chance of precipitation
             'GV19': 25,     # day of week
             'GV20': 120,    # ETo
+            'GV21': 25,
+            'GV22': 25,
+            'GV23': 25,
+            'GV24': 25,
+            'GV25': 25,
+            'GV26': 25,
+            'GV27': 25,
+            'TIME': 121,
         }
 
     return uom

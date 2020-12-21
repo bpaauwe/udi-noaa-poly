@@ -539,3 +539,206 @@ def phrase_to_id(phrase):
         return 253
     else:
         return 0
+
+
+def alert_to_id(alert):
+    if alert == 'Blizzard Warning':
+        return 1
+    elif alert == 'Costal Flood Watch':
+        return 2
+    elif alert == 'Costal Flood Warning':
+        return 3
+    elif alert == 'Dust Storm Warning':
+        return 4
+    elif alert == 'Extreme Wind Warning':
+        return 5
+    elif alert == 'Flash Flood Watch':
+        return 6
+    elif alert == 'Flash Flood Warning':
+        return 7
+    elif alert == 'Flash Flood Statement':
+        return 8
+    elif alert == 'Flood Watch':
+        return 9
+    elif alert == 'Flood Warning':
+        return 10
+    elif alert == 'Flood Statement':
+        return 11
+    elif alert == 'High Wind Watch':
+        return 12
+    elif alert == 'High Wind Warning':
+        return 13
+    elif alert == 'Hurrican Watch':
+        return 14
+    elif alert == 'Hurrican Warning':
+        return 15
+    elif alert == 'Hurrican Statement':
+        return 16
+    elif alert == 'Severe Thunderstorm Watch':
+        return 17
+    elif alert == 'Severe Thunderstorm Warning':
+        return 18
+    elif alert == 'Severe Weather Statement':
+        return 19
+    elif alert == 'Snow Squall Warning':
+        return 20
+    elif alert == 'Special Marine Warning':
+        return 21
+    elif alert == 'Special Weather Statement':
+        return 22
+    elif alert == 'Storm Surge Watch':
+        return 23
+    elif alert == 'Storm Surge Warning':
+        return 24
+    elif alert == 'Tornado Watch':
+        return 25
+    elif alert == 'Tornado Warning':
+        return 26
+    elif alert == 'Tropical Storm Watch':
+        return 27
+    elif alert == 'Tropical Storm Warning':
+        return 28
+    elif alert == 'Tsunami Watch':
+        return 29
+    elif alert == 'Tsunami Warning':
+        return 30
+    elif alert == 'Winter Storm Watch':
+        return 31
+    elif alert == 'Winter Storm Warning':
+        return 30
+    elif alert == 'Avalanche Watch':
+        return 33
+    elif alert == 'Avalanche Warning':
+        return 34
+    elif alert == 'Child Abduction Emergency':
+        return 35
+    elif alert == 'Civil Danger Warning':
+        return 36
+    elif alert == 'Civil Emergency Message':
+        return 37
+    elif alert == 'Earthquake Warning':
+        return 38
+    elif alert == 'Earthquake Immediate':
+        return 39
+    elif alert == 'Fire Warning':
+        return 40
+    elif alert == 'Hazardous Materials Warning':
+        return 41
+    elif alert == 'Law Enforcement Warning':
+        return 42
+    elif alert == 'Local Area Emergency':
+        return 43
+    elif alert == '911 Telephone Outage Emergency':
+        return 44
+    elif alert == 'Nuclear Power Plant Warning':
+        return 45
+    elif alert == 'Radiological Hazard Warning':
+        return 46
+    elif alert == 'Shelter in Place Warning':
+        return 47
+    elif alert == 'Volcano Warning':
+        return 48
+    elif alert == 'Dense Fog Advisory':
+        return 49
+    else:
+        return 0
+
+def status_to_id(alert):
+    if alert == 'Actual':
+        return 1
+    elif alert == 'Exercise':
+        return 2
+    elif alert == 'System':
+        return 3
+    elif alert == 'Test':
+        return 4
+    elif alert == 'Draft':
+        return 5
+    else:
+        return 0
+
+def type_to_id(alert):
+    if alert == 'Alert':
+        return 1
+    elif alert == 'Update':
+        return 2
+    elif alert == 'Cancel':
+        return 3
+    elif alert == 'Ack':
+        return 4
+    elif alert == 'Error':
+        return 5
+    else:
+        return 0
+
+def category_to_id(alert):
+    if alert == 'Geo':
+        return 1
+    elif alert == 'Met':
+        return 2
+    elif alert == 'Safety':
+        return 3
+    elif alert == 'Security':
+        return 4
+    elif alert == 'Rescue':
+        return 5
+    elif alert == 'Fire':
+        return 6
+    elif alert == 'Health':
+        return 7
+    elif alert == 'Env':
+        return 8
+    elif alert == 'Transport':
+        return 9
+    elif alert == 'Infra':
+        return 10
+    elif alert == 'CBRNE':
+        return 11
+    elif alert == 'Other':
+        return 12
+    else:
+        return 0
+
+def urgency_to_id(alert):
+    if alert == 'Immediate':
+        return 1
+    elif alert == 'Expected':
+        return 2
+    elif alert == 'Future':
+        return 3
+    elif alert == 'Past':
+        return 4
+    elif alert == 'Unknown':
+        return 5
+    else:
+        return 0
+
+def severity_to_id(alert):
+    if alert == 'Extreme':
+        return 1
+    elif alert == 'Severe':
+        return 2
+    elif alert == 'Moderate':
+        return 3
+    elif alert == 'Minor':
+        return 4
+    elif alert == 'Unknown':
+        return 5
+    else:
+        return 0
+
+def certainy_to_id(alert):
+    if alert == 'Observed':
+        return 1
+    elif alert == 'Likely':
+        return 2
+    elif alert == 'Possible':
+        return 3
+    elif alert == 'Unlikely':
+        return 4
+    elif alert == 'Unknown':
+        return 5
+    else:
+        return 0
+
+

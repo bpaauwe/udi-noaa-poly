@@ -64,4 +64,26 @@
 		<range uom="25" subset="0,10,20,30,40,50" NLS="DBG" />
 	</editor>
 
+	<editor id="ALERT">
+		<range uom="25" min="0" max="49" NLS="EN_ALERT" />
+	</editor>
+	<editor id="ALERT_STATUS">
+		<range uom="25" min="0" max="5" NLS="EN_ALERT_STATUS" />
+	</editor>
+	<editor id="ALERT_TYPE">
+		<range uom="25" min="0" max="5" NLS="EN_ALERT_TYPE" />
+	</editor>
+	<editor id="ALERT_SEVERITY">
+		<range uom="25" min="0" max="5" NLS="EN_ALERT_SEVERITY" />
+	</editor>
+	<editor id="ALERT_CERTAINY">
+		<range uom="25" min="0" max="5" NLS="EN_ALERT_CERTAINY" />
+	</editor>
+	<editor id="ALERT_URGENCY">
+		<range uom="25" min="0" max="5" NLS="EN_ALERT_URGENCY" />
+	</editor>
+	<editor id="ALERT_CATEGORY">
+		<range uom="25" min="0" max="12" NLS="EN_ALERT_CATEGORY" />
+	</editor>
+
 </editors>

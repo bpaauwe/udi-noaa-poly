@@ -19,12 +19,13 @@ This is a node server to pull weather data from the NOAA weather network and mak
 The settings for this node are:
 
 #### Short Poll
-   * How often to poll the NOAA weather service for current condition data (in seconds). Note that the PWS partner plan only allows for 1000 requests per day so set this appropriately. Also note that two queries are made during each poll.
+   * How often to poll the NOAA weather service for current condition data (in seconds). 
 #### Long Poll
-	* Not used
-	* Your AERIS client ID, needed to authorize the connection the the AERIS API.
+	* How often to poll for alert data (in seconds)
 #### Station
 	* The weather station to use for for weather data. Go to https://w1.weather.gov/xml/current_obs/ to look up the station for your area.
+#### Alert zone/county code
+	* The code from alerts.weather.gov that specify the zone or county you want alerts for.  Look up the code on the site and enter it here, it will typically be a 6 character code.
 
 ## Node substitution variables
 ### Current condition node
@@ -37,6 +38,15 @@ The settings for this node are:
  * sys.node.[address].WINDDIR (current wind direction )
  * sys.node.[address].DISTANC (current visibility)
  * sys.node.[address].GV13    (current weather conditions)
+
+ ### Alert infomation
+ * sys.node.[address].GV21    (Alert text)
+ * sys.node.[address].GV22    (Alert status)
+ * sys.node.[address].GV23    (Alert message type)
+ * sys.node.[address].GV24    (Alert category)
+ * sys.node.[address].GV25    (Alert severity)
+ * sys.node.[address].GV26    (Alert urgency)
+ * sys.node.[address].GV27    (Alert certainy)
 
 ## Requirements
 1. Polyglot V2.
@@ -52,5 +62,7 @@ The nodeserver keeps track of the version number and when a profile rebuild is n
 
 # Release Notes
 
+- 1.1.0 12/20/2020
+   - Add alert data from alerts.weather.gov 
 - 1.0.0 08/16/2020
    - Initial public release

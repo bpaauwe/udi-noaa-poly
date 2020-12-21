@@ -39,12 +39,19 @@ class Controller(polyinterface.Controller):
         self.latitude = 0
         self.longitude = 0
         self.force = True
+        self.poly = polyglot
 
         self.params = node_funcs.NSParameters([{
             'name': 'Station',
             'default': 'set me',
             'isRequired': True,
             'notice': 'NOAA station must be set',
+            },
+            {
+            'name': 'Alert zone/county code',
+            'default': 'set me',
+            'isRequired': False,
+            'notice': 'NOAA Zone/County code for Weather alerts.',
             },
             ])
 
@@ -68,6 +75,7 @@ class Controller(polyinterface.Controller):
 
     def start(self):
         LOGGER.info('Starting node server')
+        # self.poly.get_server_data(True, None)
         self.check_params()
         self.discover()
         self.uom = uom.get_uom('imperial')
@@ -75,11 +83,12 @@ class Controller(polyinterface.Controller):
 
         # Do an initial query to get filled in as soon as possible
         self.query_conditions()
+        self.query_alerts(self.params.get('Alert zone/county code'))
         self.force = False
 
     def longPoll(self):
         LOGGER.debug('longpoll')
-        pass
+        self.query_alerts(self.params.get('Alert zone/county code'))
 
     def shortPoll(self):
         self.query_conditions()
@@ -100,7 +109,7 @@ class Controller(polyinterface.Controller):
             c = requests.get(request)
             xdata = c.text
             c.close()
-            LOGGER.debug(xdata)
+            #LOGGER.debug(xdata)
 
             if xdata == None:
                 LOGGER.error('Current condition query returned no data')
@@ -141,6 +150,76 @@ class Controller(polyinterface.Controller):
 
         except Exception as e:
             LOGGER.error('Current observation update failure')
+            LOGGER.error(e)
+
+    def query_alerts(self, code):
+        if not self.configured:
+            LOGGER.info('Skipping alerts because we aren\'t configured yet.')
+            return
+
+
+        try:
+            request = 'https://alerts.weather.gov/cap/wwaatmget.php?'
+            request += 'x=' + code + '&y=1'
+
+            c = requests.get(request)
+            xdata = c.text
+            c.close()
+            #LOGGER.debug(xdata)
+
+            if xdata == None:
+                LOGGER.error('Weather alert query returned no data')
+                return
+        
+            LOGGER.debug('Parse XML and set drivers')
+            noaa = ET.fromstring(xdata)
+
+            """ We're looking for:
+            <cap:event>Dense Fog Advisory</cap:event>
+            <cap:effective>2020-12-19T18:23:00-08:00</cap:effective>
+            <cap:expires>2020-12-20T11:00:00-08:00</cap:expires>
+            <cap:status>Actual</cap:status>
+            <cap:msgType>Alert</cap:msgType>
+            <cap:category>Met</cap:category>
+            <cap:urgency>Expected</cap:urgency>
+            <cap:severity>Minor</cap:severity>
+            <cap:certainty>Likely</cap:certainty>
+            """
+            for entry in noaa:
+                if entry.tag == '{http://www.w3.org/2005/Atom}entry':
+                    for item in entry:
+                        if item.text:
+                            LOGGER.debug(item.tag + ' = ' + item.text)
+                            if 'event' in item.tag:
+                                LOGGER.debug('ALERT: ' + item.text)
+                                self.update_driver('GV21', conditions.alert_to_id(item.text))
+                            if 'effective' in item.tag:
+                                LOGGER.debug('EFFECTIVE: ' + item.text)
+                            if 'expires' in item.tag:
+                                LOGGER.debug('EXPIRES: ' + item.text)
+                                #self.update_driver('TIME', item.text)
+                                #self.update_driver('TIME', 100343434)
+                            if 'status' in item.tag:
+                                LOGGER.debug('STATUS: ' + item.text)
+                                self.update_driver('GV22', conditions.status_to_id(item.text))
+                            if 'msgType' in item.tag:
+                                LOGGER.debug('TYPE: ' + item.text)
+                                self.update_driver('GV23', conditions.type_to_id(item.text))
+                            if 'category' in item.tag:
+                                LOGGER.debug('CATEGORY: ' + item.text)
+                                self.update_driver('GV24', conditions.category_to_id(item.text))
+                            if 'severity' in item.tag:
+                                LOGGER.debug('SEVERITY: ' + item.text)
+                                self.update_driver('GV25', conditions.severity_to_id(item.text))
+                            if 'urgency' in item.tag:
+                                LOGGER.debug('URGENCY: ' + item.text)
+                                self.update_driver('GV26', conditions.urgency_to_id(item.text))
+                            if 'certainy' in item.tag:
+                                LOGGER.debug('CERTAINY: ' + item.text)
+                                self.update_driver('GV27', conditions.certainy_to_id(item.text))
+
+        except exception as e:
+            LOGGER.error('Weather alert update failure')
             LOGGER.error(e)
 
     def query(self):
@@ -213,6 +292,13 @@ class Controller(polyinterface.Controller):
             {'driver': 'SPEED', 'value': 0, 'uom': 49},    # wind speed
             {'driver': 'DISTANC', 'value': 0, 'uom': 83},  # visibility
             {'driver': 'GV13', 'value': 0, 'uom': 25},     # weather
+            {'driver': 'GV21', 'value': 0, 'uom': 25},     # alert
+            {'driver': 'GV22', 'value': 0, 'uom': 25},     # status
+            {'driver': 'GV23', 'value': 0, 'uom': 25},     # type
+            {'driver': 'GV24', 'value': 0, 'uom': 25},     # category
+            {'driver': 'GV25', 'value': 0, 'uom': 25},     # severity
+            {'driver': 'GV26', 'value': 0, 'uom': 25},     # urgnecy
+            {'driver': 'GV27', 'value': 0, 'uom': 25},     # certainy
             {'driver': 'GVP', 'value': 30, 'uom': 25},     # log level
             ]
 
