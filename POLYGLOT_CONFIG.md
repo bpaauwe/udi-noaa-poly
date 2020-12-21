@@ -5,3 +5,5 @@ parameters:
 - Alert zone/county code: The NOAA alert area code. Go to https://alerts.weather.gov to look up the area code for your state/county/zone.
 
 The shortPoll configuration option specifies how often to poll NOAA, in seconds.
+
+The longPoll configuration option specifies how often to poll for alerts, in seconds.
