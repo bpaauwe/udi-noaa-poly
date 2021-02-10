@@ -605,7 +605,7 @@ def alert_to_id(alert):
     elif alert == 'Winter Storm Watch':
         return 31
     elif alert == 'Winter Storm Warning':
-        return 30
+        return 32
     elif alert == 'Avalanche Watch':
         return 33
     elif alert == 'Avalanche Warning':
@@ -640,6 +640,8 @@ def alert_to_id(alert):
         return 48
     elif alert == 'Dense Fog Advisory':
         return 49
+    elif alert == 'Winter Weather Advisory':
+        return 50
     else:
         return 0
 

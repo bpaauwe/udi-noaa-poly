@@ -411,6 +411,7 @@ EN_ALERT-46 = Radiological Hazard Warning
 EN_ALERT-47 = Shelter in Place Warning
 EN_ALERT-48 = Volcano Warning
 EN_ALERT-49 = Dense Fog Advisory
+EN_ALERT-50 = Winter Weather Advisory
 
 EN_ALERT_STATUS-0 = None
 EN_ALERT_STATUS-1 = Actual
