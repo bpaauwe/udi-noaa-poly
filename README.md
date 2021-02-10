@@ -62,6 +62,8 @@ The nodeserver keeps track of the version number and when a profile rebuild is n
 
 # Release Notes
 
+- 1.1.1 02/10/2021
+   - Fix id for Winter Storm Warning
 - 1.1.0 12/20/2020
    - Add alert data from alerts.weather.gov 
 - 1.0.0 08/16/2020
