@@ -218,7 +218,7 @@ class Controller(polyinterface.Controller):
                                 LOGGER.debug('CERTAINY: ' + item.text)
                                 self.update_driver('GV27', conditions.certainy_to_id(item.text))
 
-        except exception as e:
+        except Exception as e:
             LOGGER.error('Weather alert update failure')
             LOGGER.error(e)
 
