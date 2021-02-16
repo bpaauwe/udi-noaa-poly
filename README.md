@@ -62,6 +62,8 @@ The nodeserver keeps track of the version number and when a profile rebuild is n
 
 # Release Notes
 
+- 1.1.2 02/16/2021
+   - fix typo with Exception
 - 1.1.1 02/10/2021
    - Fix id for Winter Storm Warning
 - 1.1.0 12/20/2020
