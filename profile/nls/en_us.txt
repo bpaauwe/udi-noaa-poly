@@ -42,10 +42,10 @@ ST-ctl-GV20-NAME = Evapotranspiration
 ST-ctl-GV21-NAME = Alert
 ST-ctl-GV22-NAME = Alert Status
 ST-ctl-GV23-NAME = Alert Type
-ST-ctl-GV24-NAME = Alert Cagegory
+ST-ctl-GV24-NAME = Alert Category
 ST-ctl-GV25-NAME = Alert Severity
 ST-ctl-GV26-NAME = Alert Urgency
-ST-ctl-GV27-NAME = Alert Certainy
+ST-ctl-GV27-NAME = Alert Certainty
 
 ND-daily-NAME = Daily Forecast
 ND-daily-ICON = Weather
